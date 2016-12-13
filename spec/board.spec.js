@@ -19,9 +19,14 @@ describe('Board', function() {
 
   describe('emptySpace', function(){
     //parameter passed is the coordinate: [][]
-    testBoard.emptySpace([0][1]);
+    // console.log(testBoard.emptySpace(0, 1));
     it('should return true if requested space is empty', function(){
-      expect(testBoard.emptySpace([0][1])).toEqual(true);
+      expect(testBoard.emptySpace(0, 1)).toEqual(true);
+    });
+
+    it('should return false if requested space is occupied', function() {
+      testBoard.playingField[0][2] = 2;
+      expect(testBoard.emptySpace(0, 2)).toEqual(false);
     });
   });
 
