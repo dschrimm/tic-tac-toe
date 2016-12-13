@@ -17,6 +17,15 @@ describe('Board', function() {
     });
   });
 
+  describe('emptySpace', function(){
+    //parameter passed is the coordinate: [][]
+    testBoard.emptySpace([0][1]);
+    it('should return true if requested space is empty', function(){
+      expect(testBoard.emptySpace([0][1])).toEqual(true);
+    });
+  });
+
+
   // describe('board', function() {
   //   it('should exist', function() {
   //     expect(testBoard instanceof Board).toEqual(true);
