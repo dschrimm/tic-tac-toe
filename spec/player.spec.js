@@ -1,8 +1,8 @@
-import Player from 'tic_tac_toe';
+import Player from 'player';
 
 describe('Player', function() {
   var testPlayer = new Player(1);
-  console.log(testPlayer.keys);
+  console.log(Object.getOwnPropertyNames(testPlayer));
   describe('player', function() {
     it('should have a marker', function() {
       expect(testPlayer.marker).toEqual(1);
