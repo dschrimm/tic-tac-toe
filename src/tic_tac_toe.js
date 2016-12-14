@@ -11,7 +11,7 @@ var TicTacToe = function(){
 };
 
 TicTacToe.prototype.placeMarker = function(row, column, player) {
-  this.board.playingField[row][column] = player;
+  this.board.playingField[row][column] = player.marker;
 };
 
 TicTacToe.prototype.checkWin = function() {
@@ -26,7 +26,7 @@ TicTacToe.prototype.checkWin = function() {
       rowSum += this.board.playingField[i][x];
       columnSum += this.board.playingField[x][i];
     }
-    
+
     leftDiagonalSum += this.board.playingField[i][i];
     rightDiagonalSum += this.board.playingField[i][2-i];
 
@@ -43,7 +43,7 @@ TicTacToe.prototype.checkWin = function() {
 
 TicTacToe.prototype.turn =
 function(row, column) {
-  if (this.turnCount === 9) {
+  if (this.turnCount === 9) { //|| this.checkWin() !== false) {
     throw new Error('Game is over! Please clear your board for a new game.');
   }
 
@@ -59,7 +59,12 @@ function(row, column) {
 
   this.turnCount += 1;
 
-  //if turnCount >=5, check for winner
+  // if turnCount >=5, check for winner
+  if (this.turnCount >= 5) {
+    if (this.checkWin() !== false) {
+      throw new Error(this.checkWin() + ' is the winner!');
+    }
+  }
 
   // if turnCount === 9, check for tie
   if (this.currentPlayer=== this.players[0]) {
