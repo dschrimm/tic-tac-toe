@@ -62,11 +62,16 @@ function(row, column) {
   // if turnCount >=5, check for winner
   if (this.turnCount >= 5) {
     if (this.checkWin() !== false) {
-      throw new Error(this.checkWin() + ' is the winner!');
+      throw new Error("Player" + this.checkWin().marker + ' is the winner!');
+    }
+    else if (this.turnCount === 9) {
+      throw new Error("It's a tie!");
     }
   }
 
   // if turnCount === 9, check for tie
+
+  //this toggles the player at the end of the turn
   if (this.currentPlayer=== this.players[0]) {
     this.currentPlayer = this.players[1];
   } else {

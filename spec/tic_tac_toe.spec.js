@@ -52,11 +52,11 @@ describe('TicTacToe', function() {
 
     it('should check if player\'s choice is an available spot', function() {
       expect(testGame.board.emptySpace(1, 1)).toEqual(true);
-      console.log(testGame.board.playingField);
+      // console.log(testGame.board.playingField);
       testGame.turn(1, 1);
-      console.log("turn count:" + testGame.turnCount);
-      console.log(testGame.checkWin());
-      console.log(testGame.board.playingField);
+      // console.log("turn count:" + testGame.turnCount);
+      // console.log(testGame.checkWin());
+      // console.log(testGame.board.playingField);
       expect(testGame.board.emptySpace(1, 1)).toEqual(false);
       expect(function() {testGame.turn(1, 1);}).toThrow(new Error('Space is occupied. Pick an empty space.'));
     });
@@ -66,17 +66,30 @@ describe('TicTacToe', function() {
       expect(function() {testGame.turn(2, 1);}).toThrow(new Error('Game is over! Please clear your board for a new game.'));
     });
 
-    // it('should end game when someone wins', function() {
-    //   var winningGame = new TicTacToe();
-    //   winningGame.turn(0, 1);
-    //   winningGame.turn(1, 0);
-    //   winningGame.turn(0, 0);
-    //   winningGame.turn(1, 1);
-    //
-    //   expect(function() {winningGame.turn(0,2);}).toThrow(new Error(winningGame.checkWin() + ' is the winner!'));
-    //
-    //   expect(function() {winningGame.turn(2,2);}).toThrow(new Error('Game is over! Please clear your board for a new game.'));
-    // });
+    it('should end game when someone wins', function() {
+      var winningGame = new TicTacToe();
+      winningGame.turn(0, 1);
+      winningGame.turn(1, 0);
+      winningGame.turn(0, 0);
+      winningGame.turn(1, 1);
+      // winningGame.turn(0, 2);
+      // console.log("check win returns: " + winningGame.checkWin());
+      expect(function() {winningGame.turn(0,2);}).toThrow(new Error('Player1 is the winner!'));
+      expect(function() {winningGame.turn(2,2);}).toThrow(new Error('Game is over! Please clear your board for a new game.'));
+    });
+
+    it('should return a tie error when there is no winner after 9 turns', function(){
+      var tiedGame = new TicTacToe();
+      tiedGame.turn(0,0);
+      tiedGame.turn(0,1);
+      tiedGame.turn(1,1);
+      tiedGame.turn(0,2);
+      tiedGame.turn(1,2);
+      tiedGame.turn(1,0);
+      tiedGame.turn(2,0);
+      tiedGame.turn(2,2);
+      expect(function() {tiedGame.turn(2,1);}).toThrow(new Error('It\'s a tie!'));
+    });
 
     // it ('should get player\'s space input', function(){
     //   expect() ////@TODO wait until backbone
