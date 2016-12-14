@@ -24,8 +24,13 @@ function() {
 
   // if it is, place marker
 
-  //if not, throw error 
+  //if not, throw error and start turn over
+
   this.turnCount += 1;
+
+  //if turnCount >=5, check for winner
+
+  // if turnCount === 9, check for tie 
   if (this.currentPlayer=== this.players[0]) {
     this.currentPlayer = this.players[1];
   } else {
