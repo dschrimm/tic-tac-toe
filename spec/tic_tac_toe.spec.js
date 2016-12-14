@@ -38,22 +38,28 @@ describe('TicTacToe', function() {
 
   describe('turn', function(){
     it('should toggle the player', function(){
-      testGame.turn();
-      expect(testGame.currentPlayer).toEqual(testGame.players[1]);
-      testGame.turn();
-      expect(testGame.currentPlayer).toEqual(testGame.players[0]);
+      var testToggle = new TicTacToe();
+      testToggle.turn(0, 0);
+      expect(testToggle.currentPlayer).toEqual(testToggle.players[1]);
+      testToggle.turn(0, 1);
+      expect(testToggle.currentPlayer).toEqual(testToggle.players[0]);
     });
 
     it('should increase the turn count at the end of the turn', function(){
-      testGame.turn();
-      expect(testGame.turnCount).toEqual(3);
+      testGame.turn(2, 2);
+      expect(testGame.turnCount).toEqual(1);
     });
 
-
+    it('should check if player\'s choice is an available spot', function() {
+      expect(testGame.board.emptySpace(1, 1)).toEqual(true);
+      testGame.turn(1, 1);
+      expect(testGame.board.emptySpace(1, 1)).toEqual(false);
+      expect(function() {testGame.turn(1, 1);}).toThrow(new Error('Space is occupied. Pick an empty space.'));
+    });
 
     it('should not let you play more than 9 turns', function(){
       testGame.turnCount = 9;
-      expect(function() {testGame.turn();}).toThrow(new Error('Game is over! Please clear your board for a new game.'));
+      expect(function() {testGame.turn(2, 1);}).toThrow(new Error('Game is over! Please clear your board for a new game.'));
     });
     // it ('should get player\'s space input', function(){
     //   expect() ////@TODO wait until backbone
