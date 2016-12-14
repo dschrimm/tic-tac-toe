@@ -31,7 +31,7 @@ describe('TicTacToe', function() {
   describe('placeMarker', function() {
     it('should place appropriate player\'s marker on designated space', function() {
       expect(testGame.board.emptySpace(0,1)).toEqual(true);
-      testGame.placeMarker(0,1,2);
+      testGame.placeMarker(0,1,testGame.players[1]);
       expect(testGame.board.emptySpace(0,1)).toEqual(false);
     });
   });
@@ -52,8 +52,9 @@ describe('TicTacToe', function() {
 
     it('should check if player\'s choice is an available spot', function() {
       expect(testGame.board.emptySpace(1, 1)).toEqual(true);
+      console.log(testGame.board.playingField);
       testGame.turn(1, 1);
-      console.log(testGame.turnCount);
+      console.log("turn count:" + testGame.turnCount);
       console.log(testGame.checkWin());
       console.log(testGame.board.playingField);
       expect(testGame.board.emptySpace(1, 1)).toEqual(false);

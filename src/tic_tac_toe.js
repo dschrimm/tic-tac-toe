@@ -5,7 +5,7 @@ var TicTacToe = function(){
   this.MAX_TURNS = 9;
   this.totalTurns = 0;
   this.board = new Board();
-  this.players = [new Player(1), new Player(2)];
+  this.players = [new Player(1), new Player(5)];
   this.currentPlayer = this.players[0];
   this.turnCount = 0;
 };
@@ -43,7 +43,7 @@ TicTacToe.prototype.checkWin = function() {
 
 TicTacToe.prototype.turn =
 function(row, column) {
-  if (this.turnCount === 9) { //|| this.checkWin() !== false) {
+  if (this.turnCount === 9 || this.checkWin() !== false) {
     throw new Error('Game is over! Please clear your board for a new game.');
   }
 
