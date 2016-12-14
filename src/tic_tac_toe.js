@@ -14,6 +14,22 @@ TicTacToe.prototype.placeMarker = function(row, column, player) {
   this.board.playingField[row][column] = player;
 };
 
+TicTacToe.prototype.checkWin = function() {
+  //first, iterate over each row
+  for (var i = 0; i< 3; i++) {
+    var sum = 0;
+    for (var x = 0; x < 3; x++){
+      sum += this.board.playingField[i][x];
+    }
+    if (sum === 3) {
+      return this.players[0];
+    } else if (sum === 15) {
+      return this.players[1];
+    }
+  }
+  return false;
+};
+
 TicTacToe.prototype.turn =
 function(row, column) {
   if (this.turnCount === 9) {

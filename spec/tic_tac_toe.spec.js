@@ -65,4 +65,21 @@ describe('TicTacToe', function() {
     //   expect() ////@TODO wait until backbone
     // });
   });
+
+  describe('checkWin', function(){
+    it('should recognize a winner (or not) in a row', function(){
+      var testRowWin = new TicTacToe();
+      expect(testRowWin.checkWin()).toEqual(false);
+      testRowWin.board.playingField[1] = [5,5,5];
+      expect(testRowWin.checkWin()).toEqual(testRowWin.players[1]);
+    });
+    it('should recognize a winner (or not) in a column', function(){
+      var testColumnWin = new TicTacToe();
+      // expect(testColumnWin.checkWin()).toEqual(false);
+      testColumnWin.board.playingField[2][0] = 1;
+      testColumnWin.board.playingField[2][1] = 1;
+      testColumnWin.board.playingField[2][2] = 1;
+      expect(testColumnWin.checkWin()).toEqual(testColumnWin.players[0]);
+    });
+  });
 });
