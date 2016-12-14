@@ -35,4 +35,21 @@ describe('TicTacToe', function() {
       expect(testGame.board.emptySpace(0,1)).toEqual(false);
     });
   });
+
+  describe('turn', function(){
+    it('should toggle the player', function(){
+      testGame.turn();
+      expect(testGame.currentPlayer).toEqual(testGame.players[1]);
+      testGame.turn();
+      expect(testGame.currentPlayer).toEqual(testGame.players[0]);
+    });
+
+    it('should increase the turn count at the end of the turn', function(){
+      testGame.turn();
+      expect(testGame.turnCount).toEqual(3);
+    });
+    // it ('should get player\'s space input', function(){
+    //   expect() ////@TODO wait until backbone
+    // });
+  });
 });
