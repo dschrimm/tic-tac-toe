@@ -75,11 +75,26 @@ describe('TicTacToe', function() {
     });
     it('should recognize a winner (or not) in a column', function(){
       var testColumnWin = new TicTacToe();
-      // expect(testColumnWin.checkWin()).toEqual(false);
-      testColumnWin.board.playingField[2][0] = 1;
-      testColumnWin.board.playingField[2][1] = 1;
+      expect(testColumnWin.checkWin()).toEqual(false);
+      testColumnWin.board.playingField[0][2] = 1;
+      // console.log(testColumnWin.board.playingField);
+      testColumnWin.board.playingField[1][2] = 1;
+      // console.log(testColumnWin.board.playingField);
       testColumnWin.board.playingField[2][2] = 1;
+      // console.log(testColumnWin.board.playingField);
       expect(testColumnWin.checkWin()).toEqual(testColumnWin.players[0]);
+    });
+
+    it('should recognize a winner (or not) in a diagonal', function(){
+      var testDiagonalWin = new TicTacToe();
+      expect(testDiagonalWin.checkWin()).toEqual(false);
+      testDiagonalWin.board.playingField[0][2] = 1;
+      // // console.log(testDiagonalWin.board.playingField);
+      testDiagonalWin.board.playingField[1][1] = 1;
+      // // console.log(testDiagonalWin.board.playingField);
+      testDiagonalWin.board.playingField[2][0] = 1;
+      // // console.log(testDiagonalWin.board.playingField);
+      expect(testDiagonalWin.checkWin()).toEqual(testDiagonalWin.players[0]);
     });
   });
 });
