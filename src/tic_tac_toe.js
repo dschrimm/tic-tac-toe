@@ -16,14 +16,21 @@ TicTacToe.prototype.placeMarker = function(row, column, player) {
 
 TicTacToe.prototype.turn =
 function() {
+  if (this.turnCount === 9) {
+    throw new Error('Game is over! Please clear your board for a new game.');
+  }
+
+  //check if player's choice is an available spot
+
+  // if it is, place marker
+
+  //if not, throw error 
+  this.turnCount += 1;
   if (this.currentPlayer=== this.players[0]) {
     this.currentPlayer = this.players[1];
   } else {
     this.currentPlayer = this.players[0];
   }
-
-  this.turnCount += 1;
-
 };
 
 export default TicTacToe;

@@ -48,6 +48,13 @@ describe('TicTacToe', function() {
       testGame.turn();
       expect(testGame.turnCount).toEqual(3);
     });
+
+
+
+    it('should not let you play more than 9 turns', function(){
+      testGame.turnCount = 9;
+      expect(function() {testGame.turn();}).toThrow(new Error('Game is over! Please clear your board for a new game.'));
+    });
     // it ('should get player\'s space input', function(){
     //   expect() ////@TODO wait until backbone
     // });
