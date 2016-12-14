@@ -15,41 +15,28 @@ TicTacToe.prototype.placeMarker = function(row, column, player) {
 };
 
 TicTacToe.prototype.checkWin = function() {
-  //first, iterate over each row
+  var leftDiagonalSum = 0;
+  var rightDiagonalSum = 0;
+
   for (var i = 0; i< 3; i++) {
     var rowSum = 0;
+    var columnSum = 0;
+
     for (var x = 0; x < 3; x++){
       rowSum += this.board.playingField[i][x];
-    }
-    if (rowSum === 3) {
-      return this.players[0];
-    } else if (rowSum === 15) {
-      return this.players[1];
-    }
-  }
-  for (var i = 0; i< 3; i++) {
-    var columnSum = 0;
-    for (var x = 0; x < 3; x++){
       columnSum += this.board.playingField[x][i];
     }
-    if (columnSum === 3) {
+    
+    leftDiagonalSum += this.board.playingField[i][i];
+    rightDiagonalSum += this.board.playingField[i][2-i];
+
+    if (rowSum === 3 || columnSum === 3|| leftDiagonalSum === 3 || rightDiagonalSum === 3) {
       return this.players[0];
-    } else if (columnSum === 15) {
+    } else if (rowSum === 15 || columnSum === 15 || leftDiagonalSum === 15 || rightDiagonalSum === 15) {
       return this.players[1];
     }
   }
 
-  var leftDiagonalSum = 0;
-  var rightDiagonalSum = 0;
-  for (var i = 0; i< 3; i++) {
-      leftDiagonalSum += this.board.playingField[i][i];
-      rightDiagonalSum += this.board.playingField[i][2-i];
-    }
-    if (leftDiagonalSum === 3 || rightDiagonalSum === 3) {
-      return this.players[0];
-    } else if (leftDiagonalSum === 15 || rightDiagonalSum === 15) {
-      return this.players[1];
-    }
 
   return false;
 };

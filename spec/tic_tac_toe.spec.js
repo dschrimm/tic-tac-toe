@@ -77,11 +77,8 @@ describe('TicTacToe', function() {
       var testColumnWin = new TicTacToe();
       expect(testColumnWin.checkWin()).toEqual(false);
       testColumnWin.board.playingField[0][2] = 1;
-      // console.log(testColumnWin.board.playingField);
       testColumnWin.board.playingField[1][2] = 1;
-      // console.log(testColumnWin.board.playingField);
       testColumnWin.board.playingField[2][2] = 1;
-      // console.log(testColumnWin.board.playingField);
       expect(testColumnWin.checkWin()).toEqual(testColumnWin.players[0]);
     });
 
@@ -89,12 +86,20 @@ describe('TicTacToe', function() {
       var testDiagonalWin = new TicTacToe();
       expect(testDiagonalWin.checkWin()).toEqual(false);
       testDiagonalWin.board.playingField[0][2] = 1;
-      // // console.log(testDiagonalWin.board.playingField);
       testDiagonalWin.board.playingField[1][1] = 1;
-      // // console.log(testDiagonalWin.board.playingField);
       testDiagonalWin.board.playingField[2][0] = 1;
-      // // console.log(testDiagonalWin.board.playingField);
       expect(testDiagonalWin.checkWin()).toEqual(testDiagonalWin.players[0]);
+    });
+
+    it('should recognize no winner when total sum adds to win but not in correct order', function(){
+      var testWackyBoard = new TicTacToe();
+      expect(testWackyBoard.checkWin()).toEqual(false);
+      testWackyBoard.board.playingField[0][0] = 1;
+      testWackyBoard.board.playingField[1][0] = 5;
+      testWackyBoard.board.playingField[1][1] = 1;
+      testWackyBoard.board.playingField[2][0] = 1;
+      testWackyBoard.board.playingField[2][2] = 5;
+      expect(testWackyBoard.checkWin()).toEqual(false);
     });
   });
 });
