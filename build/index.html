@@ -1,53 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Tic-Tac-Toed</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/app.css">
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">  pick our own custom font and put it here-->
-  </head>
-  <body>
-    <div id="application">
-      <header>
-        <h1>Tic-Tac-To(a/e)d</h1>
-      </header>
-      <main id="board">
-          <table id="board-table">
-            <tr>
-              <td id="a1">a1</td>
-              <td id="a2">a2</td>
-              <td id="a3">a3</td>
-            </tr>
-            <tr>
-              <td id="b1">b1</td>
-              <td id="b2">b2</td>
-              <td id="b3">b3</td>
-            </tr>
-            <tr>
-              <td id="c1">c1</td>
-              <td id="c2">c2</td>
-              <td id="c3">c3</td>
-            </tr>
+<head>
+  <title>Tic-Tac-Toed</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/app.css">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">  pick our own custom font and put it here-->
+</head>
+<body>
+  <div id="application">
+    <header>
+      <h1>Tic-Tac-To(a/e)d</h1>
+    </header>
+    <main class="row">
+      <section id="player-status" class="small-12 medium-3 columns">
+        <h2>PLAYERS</h2>
+      </section>
+      <section id="board" class="small-12 medium-9 columns">
+        <table id="board-table">
+          <tr>
+            <td id="a1">a1</td>
+            <td id="a2">a2</td>
+            <td id="a3">a3</td>
+          </tr>
+          <tr>
+            <td id="b1">b1</td>
+            <td id="b2">b2</td>
+            <td id="b3">b3</td>
+          </tr>
+          <tr>
+            <td id="c1">c1</td>
+            <td id="c2">c2</td>
+            <td id="c3">c3</td>
+          </tr>
 
-            <!-- <ul id="board-spaces" class="row align-center"></ul> -->
-          </table>
-          <section id="player-markers"></section>
+          <!-- <ul id="board-spaces" class="row align-center"></ul> -->
+        </table>
+        <!-- <section id="player-markers"></section> -->
 
-          <h3 class="button btn-new-game">Start New Game</h3>
-        </main>
+        <h3 class="button btn-new-game">Start New Game</h3>
+      </section>
+    </main>
 
 
-    </div>
+  </div>
 
-    <!-- Underscore Templates -->
-    <script type="text/template" id="tmpl-board-space">
-      <li class="contact-card small-11 medium-4 large-2 medium-offset-1 columns">
-        <h4><%- space.id %></h4>
-      </li>
-    </script>
+  <!-- Underscore Templates -->
+  <script type="text/template" id="tmpl-board-space">
+    <li class="contact-card small-11 medium-4 large-2 medium-offset-1 columns">
+      <h4><%- space.id %></h4>
+    </li>
+  </script>
 
-    <!-- Entire JS project built by Webpack -->
-    <script src="/app.bundle.js" charset="utf-8"></script>
-  </body>
+  <!-- Entire JS project built by Webpack -->
+  <script src="/app.bundle.js" charset="utf-8"></script>
+</body>
 </html>
