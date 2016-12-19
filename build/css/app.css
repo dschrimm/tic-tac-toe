@@ -18,3 +18,14 @@ td {
 td:hover {
   background-color: #3d4250;
 }
+
+.clicked {
+  background-color: rgb(173, 66, 92);
+}
+.clicked:hover {
+  background-color: rgb(173, 66, 92);
+}
+
+.other_clicked {
+  background-color: rgb(42, 129, 198);
+}

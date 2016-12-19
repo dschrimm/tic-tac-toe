@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import $ from 'jquery';
 import Backbone from 'backbone';
 import SpaceView from 'app/views/space_view';
 
@@ -15,6 +16,10 @@ var BoardView = Backbone.View.extend({
 
   cellClick: function(e) {
     console.log(e.currentTarget.id);
+    console.log(e.currentTarget);
+
+    // Add class associated with player's number to determine marker color
+    $(e.currentTarget).addClass('clicked');
     // this.trigger('select', this);
 
     // We return false to tell jQuery not to run any more event handlers.
