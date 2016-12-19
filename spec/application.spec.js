@@ -1,4 +1,4 @@
-import TicTacToe from 'app/models/game';
+import TicTacToe from 'app/models/application';
 import Board from 'app/models/board';
 import Player from 'app/models/player';
 
