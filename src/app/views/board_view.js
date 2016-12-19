@@ -6,6 +6,7 @@ var BoardView = Backbone.View.extend({
   initialize: function() {
     console.log("BoardView created");
     // this.template = _.template(Backbone.$('#tmpl-trip-card').html());
+    this.render();
   },
 
   events: {
