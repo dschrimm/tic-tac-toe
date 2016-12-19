@@ -5,7 +5,7 @@ var TicTacToe = function(){
   this.MAX_TURNS = 9;
   this.totalTurns = 0;
   this.board = new Board();
-  this.players = [new Player(1), new Player(5)];
+  this.players = [new Player({num: 1}), new Player({num: 5})];
   this.currentPlayer = this.players[0];
   this.turnCount = 0;
 };
