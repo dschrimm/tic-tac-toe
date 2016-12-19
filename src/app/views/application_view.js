@@ -8,6 +8,16 @@ var ApplicationView = Backbone.View.extend({
 
   },
 
+  events: {
+    'click .table-cell': 'cellClick'
+  },
+
+  cellClick: function(e){
+    console.log('clicked inside the board!');
+    console.log(e.currentTarget.id);
+
+  },
+
   render: function(){
     console.log("rendering within appView");
     // var boardView = new BoardView({
