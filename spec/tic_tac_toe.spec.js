@@ -1,6 +1,6 @@
 import TicTacToe from 'tic_tac_toe';
-import Board from 'board';
-import Player from 'player';
+import Board from 'app/models/board';
+import Player from 'app/models/player';
 
 describe('TicTacToe', function() {
   var testGame = new TicTacToe();

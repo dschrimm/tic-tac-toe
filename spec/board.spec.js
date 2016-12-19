@@ -1,4 +1,4 @@
-import Board from 'board';
+import Board from 'app/models/board';
 
 describe('Board', function() {
   var testBoard = new Board();

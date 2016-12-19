@@ -1,5 +1,5 @@
-import Board from 'board';
-import Player from 'player';
+import Board from 'app/models/board';
+import Player from 'app/models/player';
 
 var TicTacToe = function(){
   this.MAX_TURNS = 9;

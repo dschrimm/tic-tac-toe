@@ -1,4 +1,4 @@
-import Player from 'player';
+import Player from 'app/models/player';
 
 describe('Player', function() {
   var testPlayer = new Player(1);
