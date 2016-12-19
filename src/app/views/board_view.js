@@ -6,16 +6,16 @@ var BoardView = Backbone.View.extend({
   initialize: function() {
     console.log("BoardView created");
     // this.template = _.template(Backbone.$('#tmpl-trip-card').html());
-    this.render();
+    // this.render();
   },
 
   events: {
-    'click': 'onClick'
+    'click td': 'cellClick'
   },
 
-  onClick: function(e) {
-    console.log('on click');
-    this.trigger('select', this);
+  cellClick: function(e) {
+    console.log(e.currentTarget.id);
+    // this.trigger('select', this);
 
     // We return false to tell jQuery not to run any more event handlers.
     // Otherwise, it would run the 'click' event handler on RolodexView
