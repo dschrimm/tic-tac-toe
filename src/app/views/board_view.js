@@ -12,7 +12,7 @@ var BoardView = Backbone.View.extend({
   },
 
   events: {
-    'click td': 'cellClick'
+    'click td': 'cellClick',
   },
 
   cellClick: function(e) {
@@ -23,6 +23,8 @@ var BoardView = Backbone.View.extend({
     // console.log(e.currentTarget);
     // console.log('row ' + row);
     // console.log('column ' + column);
+
+    this.trigger('turn', [row, column]);
 
 
     // Add class associated with player's number to determine marker color

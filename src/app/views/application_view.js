@@ -10,7 +10,12 @@ var ApplicationView = Backbone.View.extend({
       model: board,
       el: this.$('#board')
     });
+    this.listenTo(boardView, 'turn', this.takeTurn);
     this.render();
+  },
+
+  takeTurn: function(coordinates){
+    console.log(coordinates);
   },
 
   // turn: function(row, column){
