@@ -16,6 +16,7 @@ var ApplicationView = Backbone.View.extend({
 
   takeTurn: function(coordinates){
     console.log(coordinates);
+    this.model.turn(coordinates[0], coordinates[1]);
   },
 
   // turn: function(row, column){

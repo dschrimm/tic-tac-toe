@@ -24,11 +24,12 @@ var BoardView = Backbone.View.extend({
     // console.log('row ' + row);
     // console.log('column ' + column);
 
+    // Add class associated with player's number to determine marker color
+    $(e.currentTarget).addClass('clicked');
+    
     this.trigger('turn', [row, column]);
 
 
-    // Add class associated with player's number to determine marker color
-    $(e.currentTarget).addClass('clicked');
     // this.trigger('select', this);
 
     // We return false to tell jQuery not to run any more event handlers.
