@@ -19,13 +19,17 @@ td:hover {
   background-color: #3d4250;
 }
 
-.clicked {
+.player-one {
   background-color: rgb(173, 66, 92);
 }
-.clicked:hover {
+.player-one:hover {
   background-color: rgb(173, 66, 92);
 }
 
-.other_clicked {
+.player-two {
+  background-color: rgb(42, 129, 198);
+}
+
+.player-two:hover {
   background-color: rgb(42, 129, 198);
 }

@@ -1,12 +1,15 @@
 import _ from 'underscore';
 import $ from 'jquery';
 import Backbone from 'backbone';
-import TicTacToe from 'app/models/application';
+import TicTacToe from 'app/models/tic_tac_toe';
 import Board from 'app/models/board';
 
-var BoardView = Backbone.View.extend({
-  initialize: function() {
+const BoardView = Backbone.View.extend({
+  initialize: function(options) {
     console.log("BoardView created");
+
+    // this.application_view = this.options.application_view;
+
     // this.template = _.template(Backbone.$('#tmpl-trip-card').html());
     // this.render();
   },
@@ -25,10 +28,19 @@ var BoardView = Backbone.View.extend({
     // console.log('column ' + column);
 
     // Add class associated with player's number to determine marker color
-    $(e.currentTarget).addClass('clicked');
-    
+    // $(e.currentTarget).addClass('clicked');
+    // console.log(TicTacToe.get(currentPlayer));
+
     this.trigger('turn', [row, column]);
 
+    if (this.model.playingField[row][column] === 1) {
+      $(e.currentTarget).addClass('player-one');
+    } else if (this.model.playingField[row][column] === 5) {
+      $(e.currentTarget).addClass('player-two');
+    }
+
+
+    this.render();
 
     // this.trigger('select', this);
 
@@ -37,6 +49,10 @@ var BoardView = Backbone.View.extend({
     // as well.
     return false;
   },
+
+  render: function() {
+    return this;
+  }
 });
 
 export default BoardView;

@@ -1,4 +1,4 @@
-import TicTacToe from 'app/models/application';
+import TicTacToe from 'app/models/tic_tac_toe';
 import ApplicationView from 'app/views/application_view';
 
 var game = new TicTacToe();

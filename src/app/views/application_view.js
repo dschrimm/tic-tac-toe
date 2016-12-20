@@ -1,14 +1,17 @@
 import Backbone from 'backbone';
 import Board from 'app/models/board';
 import BoardView from 'app/views/board_view';
+import TicTacToe from 'app/models/tic_tac_toe';
 
 var ApplicationView = Backbone.View.extend({
   initialize: function(){
     console.log("ApplicationView created");
-    var board = new Board();
+    // var board = new Board();
+    // console.log(this.model.board);
     var boardView = new BoardView({
-      model: board,
-      el: this.$('#board')
+      model: this.model.board,
+      el: this.$('#board'),
+      // application_view: this
     });
     this.listenTo(boardView, 'turn', this.takeTurn);
     this.render();
@@ -16,12 +19,9 @@ var ApplicationView = Backbone.View.extend({
 
   takeTurn: function(coordinates){
     console.log(coordinates);
+    console.log(this.model.currentPlayer.get("num"));
     this.model.turn(coordinates[0], coordinates[1]);
   },
-
-  // turn: function(row, column){
-  //   this.model.turn(row, column);
-  // },
 
   render: function(){
     console.log("rendering within appView");
