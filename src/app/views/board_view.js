@@ -16,10 +16,14 @@ var BoardView = Backbone.View.extend({
   },
 
   cellClick: function(e) {
-    console.log(this.model.playingField);
-    console.log(e.currentTarget.id);
-    console.log(e.currentTarget);
-    console.log();
+    var row = parseInt(e.currentTarget.id[0]),
+        column = parseInt(e.currentTarget.id[2]);
+    // console.log(this.model.playingField);
+    // console.log(e.currentTarget.id);
+    // console.log(e.currentTarget);
+    // console.log('row ' + row);
+    // console.log('column ' + column);
+
 
     // Add class associated with player's number to determine marker color
     $(e.currentTarget).addClass('clicked');

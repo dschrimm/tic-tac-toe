@@ -5,13 +5,17 @@ import BoardView from 'app/views/board_view';
 var ApplicationView = Backbone.View.extend({
   initialize: function(){
     console.log("ApplicationView created");
-    // this.render();
     var board = new Board();
     var boardView = new BoardView({
       model: board,
       el: this.$('#board')
     });
+    this.render();
   },
+
+  // turn: function(row, column){
+  //   this.model.turn(row, column);
+  // },
 
   render: function(){
     console.log("rendering within appView");
