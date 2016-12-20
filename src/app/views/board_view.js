@@ -1,7 +1,8 @@
 import _ from 'underscore';
 import $ from 'jquery';
 import Backbone from 'backbone';
-import SpaceView from 'app/views/space_view';
+import TicTacToe from 'app/models/application';
+import Board from 'app/models/board';
 
 var BoardView = Backbone.View.extend({
   initialize: function() {
@@ -15,8 +16,10 @@ var BoardView = Backbone.View.extend({
   },
 
   cellClick: function(e) {
+    console.log(this.model.playingField);
     console.log(e.currentTarget.id);
     console.log(e.currentTarget);
+    console.log();
 
     // Add class associated with player's number to determine marker color
     $(e.currentTarget).addClass('clicked');
