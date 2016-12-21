@@ -24,6 +24,10 @@ td:hover {
   background-color: #3d4250;
 }
 
+p {
+  font-size: 3em;
+}
+
 .player-one {
   background-color: rgb(173, 66, 92);
 }

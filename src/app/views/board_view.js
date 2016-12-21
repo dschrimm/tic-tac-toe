@@ -27,9 +27,9 @@ const BoardView = Backbone.View.extend({
 
     // Add class associated with player's number to determine marker color
     if (this.model.playingField[row][column] === 1) {
-      $(e.currentTarget).addClass('player-one').append('	&#128056;');
+      $(e.currentTarget).addClass('player-one').append(this.model.markers[0]);
     } else if (this.model.playingField[row][column] === 5) {
-      $(e.currentTarget).addClass('player-two').append('&#128099;');
+      $(e.currentTarget).addClass('player-two').append(this.model.markers[1]);
     }
 
     console.log(this.model.playingField);
