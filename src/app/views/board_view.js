@@ -27,16 +27,16 @@ const BoardView = Backbone.View.extend({
 
     // Add class associated with player's number to determine marker color
     if (this.model.playingField[row][column] === 1) {
-      $(e.currentTarget).addClass('player-one');
+      $(e.currentTarget).addClass('player-one').append('	&#128056;');
     } else if (this.model.playingField[row][column] === 5) {
-      $(e.currentTarget).addClass('player-two');
+      $(e.currentTarget).addClass('player-two').append('&#128099;');
     }
 
     console.log(this.model.playingField);
     // console.log(this.model);
     this.trigger('checkwinner', [this.model]);
 
-    this.render();
+    // this.render();
 
     // this.trigger('select', this);
 
@@ -47,7 +47,9 @@ const BoardView = Backbone.View.extend({
   },
 
   render: function() {
-    // $('td').removeClass();
+    console.log('rendering in boardview');
+    $('td').removeClass();
+    $('td').empty();
     return this;
   }
 });

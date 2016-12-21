@@ -44,12 +44,11 @@ var ApplicationView = Backbone.View.extend({
     // console.log(this.model.board);
     this.model = new TicTacToe();
     this.boardView.model = this.model.board;
-    this.render();
+    this.boardView.render();
   },
 
   render: function(){
     console.log("rendering within appView");
-    $('td').removeClass();
   }
 });
 
