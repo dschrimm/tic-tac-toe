@@ -7,6 +7,7 @@ import Board from 'app/models/board';
 const BoardView = Backbone.View.extend({
   initialize: function(options) {
     console.log("BoardView created");
+    console.log(this.model.playingField);
 
     // this.application_view = this.options.application_view;
 
@@ -21,24 +22,18 @@ const BoardView = Backbone.View.extend({
   cellClick: function(e) {
     var row = parseInt(e.currentTarget.id[0]),
         column = parseInt(e.currentTarget.id[2]);
-    // console.log(this.model.playingField);
-    // console.log(e.currentTarget.id);
-    // console.log(e.currentTarget);
-    // console.log('row ' + row);
-    // console.log('column ' + column);
-
-    // Add class associated with player's number to determine marker color
-    // $(e.currentTarget).addClass('clicked');
-    // console.log(TicTacToe.get(currentPlayer));
 
     this.trigger('turn', [row, column]);
 
+    // Add class associated with player's number to determine marker color
     if (this.model.playingField[row][column] === 1) {
       $(e.currentTarget).addClass('player-one');
     } else if (this.model.playingField[row][column] === 5) {
       $(e.currentTarget).addClass('player-two');
     }
 
+    console.log(this.model.playingField);
+    // console.log(this.model);
     this.trigger('checkwinner', [this.model]);
 
     this.render();
@@ -52,6 +47,7 @@ const BoardView = Backbone.View.extend({
   },
 
   render: function() {
+    // $('td').removeClass();
     return this;
   }
 });
