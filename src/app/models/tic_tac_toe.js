@@ -59,15 +59,15 @@ const TicTacToe = Backbone.Model.extend({
 
     this.turnCount += 1;
 
-    // if turnCount >=5, check for winner
-    if (this.turnCount >= 5) {
-      if (this.checkWin() !== false) {
-        throw new Error("Player" + this.checkWin().marker + ' is the winner!');
-      }
-      else if (this.turnCount === 9) {
-        throw new Error("It's a tie!");
-      }
-    }
+    // // if turnCount >=5, check for winner
+    // if (this.turnCount >= 5) {
+    //   if (this.checkWin() !== false) {
+    //     throw new Error("Player" + this.checkWin().marker + ' is the winner!');
+    //   }
+    //   else if (this.turnCount === 9) {
+    //     throw new Error("It's a tie!");
+    //   }
+    // }
 
     // if turnCount === 9, check for tie
 

@@ -11,7 +11,7 @@ const BoardView = Backbone.View.extend({
     // this.application_view = this.options.application_view;
 
     // this.template = _.template(Backbone.$('#tmpl-trip-card').html());
-    // this.render();
+    this.render();
   },
 
   events: {
@@ -39,6 +39,7 @@ const BoardView = Backbone.View.extend({
       $(e.currentTarget).addClass('player-two');
     }
 
+    this.trigger('checkwinner', [this.model]);
 
     this.render();
 
