@@ -12,8 +12,8 @@ describe('Board', function() {
       expect(testBoard.playingField instanceof Array).toEqual(true);
     });
 
-    it('should have 9 empty spaces with default value of 0', function(){
-      expect(testBoard.playingField).toEqual([[0,0,0],[0,0,0],[0,0,0]]);
+    it('should have 9 empty spaces with default value of " "', function(){
+      expect(testBoard.playingField).toEqual([[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]);
     });
   });
 

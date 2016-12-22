@@ -49,47 +49,35 @@ const TicTacToe = Backbone.Model.extend({
           rowSum += 1;
         } else if (this.board.playingField[i][x] == 'O') {
           rowSum += 5;
-        // } else {
-        //   playerValue = 0;
         }
+
         if (this.board.playingField[x][i] == 'X') {
           columnSum += 1;
         } else if (this.board.playingField[x][i] == 'O') {
           columnSum += 5;
         }
-        // rowSum += playerValue;
-        // columnSum += playerValue;
       }
 
       if (this.board.playingField[i][i] == 'X') {
         leftDiagonalSum += 1;
       } else if (this.board.playingField[i][i] == 'O') {
         leftDiagonalSum += 5;
-      // } else {
-      //   playerValue = 0;
       }
-      // leftDiagonalSum += playerValue;
 
       if (this.board.playingField[i][2-i] == 'X') {
         rightDiagonalSum += 1;
       } else if (this.board.playingField[i][2-i] == 'O') {
         rightDiagonalSum += 5;
-      // } else {
-      //   playerValue = 0;
       }
-      // rightDiagonalSum += playerValue;
-
 
       if (rowSum === 3 || columnSum === 3|| leftDiagonalSum === 3 || rightDiagonalSum === 3) {
         // toads
         this.winner = 'X';
         return this.players[0];
-        // return true;
       } else if (rowSum === 15 || columnSum === 15 || leftDiagonalSum === 15 || rightDiagonalSum === 15) {
         // toes
         this.winner = 'O';
         return this.players[1];
-        // return true;
       }
     }
 
@@ -105,19 +93,21 @@ const TicTacToe = Backbone.Model.extend({
     // if not, throw error and start turn over
     if (this.board.emptySpace(row, column) === true) {
       this.placeMarker(row, column, this.currentPlayer);
+
+      // increase turn count
+      this.turnCount += 1;
+
+      // toggle the player
+      if (this.currentPlayer=== this.players[0]) {
+        this.currentPlayer = this.players[1];
+      } else {
+        this.currentPlayer = this.players[0];
+      }
     } else {
+      alert('Space is occupied. Pick an empty space.');
       throw new Error('Space is occupied. Pick an empty space.');
     }
 
-    // increase turn count
-    this.turnCount += 1;
-
-    // toggle the player
-    if (this.currentPlayer=== this.players[0]) {
-      this.currentPlayer = this.players[1];
-    } else {
-      this.currentPlayer = this.players[0];
-    }
   }
 });
 

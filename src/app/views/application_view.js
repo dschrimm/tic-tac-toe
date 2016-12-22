@@ -37,9 +37,11 @@ var ApplicationView = Backbone.View.extend({
       this.player = 1;
       this.currentMarker = 'O';
     }
+    console.log(this.player);
+    console.log('turncount: ' + this.model.turnCount);
+    this.model.turn(coordinates[0], coordinates[1]);
     $('.current-player').empty();
     $('.current-player').append(this.model.board.markers[(1 - this.player)]);
-    this.model.turn(coordinates[0], coordinates[1]);
     // this.render();
   },
 

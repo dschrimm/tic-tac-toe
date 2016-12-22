@@ -15,7 +15,7 @@ describe('TicTacToe', function() {
     });
 
     it('should start with an empty board', function() {
-      expect(testGame.board.playingField).toEqual([[0,0,0],[0,0,0],[0,0,0]]);
+      expect(testGame.board.playingField).toEqual([[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]);
     });
 
     it('should start with two players', function() {
@@ -100,24 +100,24 @@ describe('TicTacToe', function() {
     it('should recognize a winner (or not) in a row', function(){
       var testRowWin = new TicTacToe();
       expect(testRowWin.checkWin()).toEqual(false);
-      testRowWin.board.playingField[1] = [5,5,5];
+      testRowWin.board.playingField[1] = ['O','O','O'];
       expect(testRowWin.checkWin()).toEqual(testRowWin.players[1]);
     });
     it('should recognize a winner (or not) in a column', function(){
       var testColumnWin = new TicTacToe();
       expect(testColumnWin.checkWin()).toEqual(false);
-      testColumnWin.board.playingField[0][2] = 1;
-      testColumnWin.board.playingField[1][2] = 1;
-      testColumnWin.board.playingField[2][2] = 1;
+      testColumnWin.board.playingField[0][2] = 'X';
+      testColumnWin.board.playingField[1][2] = 'X';
+      testColumnWin.board.playingField[2][2] = 'X';
       expect(testColumnWin.checkWin()).toEqual(testColumnWin.players[0]);
     });
 
     it('should recognize a winner (or not) in a diagonal', function(){
       var testDiagonalWin = new TicTacToe();
       expect(testDiagonalWin.checkWin()).toEqual(false);
-      testDiagonalWin.board.playingField[0][2] = 1;
-      testDiagonalWin.board.playingField[1][1] = 1;
-      testDiagonalWin.board.playingField[2][0] = 1;
+      testDiagonalWin.board.playingField[0][2] = 'X';
+      testDiagonalWin.board.playingField[1][1] = 'X';
+      testDiagonalWin.board.playingField[2][0] = 'X';
       expect(testDiagonalWin.checkWin()).toEqual(testDiagonalWin.players[0]);
     });
 
