@@ -21,6 +21,7 @@ const TicTacToe = Backbone.Model.extend({
    },
 
   initialize: function(){
+    console.log('model created');
     this.MAX_TURNS = 9;
     this.totalTurns = 0;
     this.board = new Board();

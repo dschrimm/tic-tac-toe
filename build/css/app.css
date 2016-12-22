@@ -42,3 +42,7 @@ p {
 .player-two:hover {
   background-color: rgb(42, 129, 198);
 }
+
+#past-games {
+  text-align: center;
+}

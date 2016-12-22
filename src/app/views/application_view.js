@@ -37,8 +37,8 @@ var ApplicationView = Backbone.View.extend({
       this.player = 1;
       this.currentMarker = 'O';
     }
-    console.log(this.player);
-    console.log('turncount: ' + this.model.turnCount);
+    // console.log(this.player);
+    // console.log('turncount: ' + this.model.turnCount);
     this.model.turn(coordinates[0], coordinates[1]);
     $('.current-player').empty();
     $('.current-player').append(this.model.board.markers[(1 - this.player)]);
@@ -47,7 +47,6 @@ var ApplicationView = Backbone.View.extend({
 
   checkWinner: function(boardView) {
     if (this.model.turnCount >= 5) {
-      console.log(this.model.checkWin());
       // var winner = this.model.winner;
       // console.log(winner);
       if (this.model.checkWin() !== false){

@@ -7,7 +7,7 @@ import Board from 'app/models/board';
 const BoardView = Backbone.View.extend({
   initialize: function(options) {
     console.log("BoardView created");
-    console.log(this.model.playingField);
+    // console.log(this.model.playingField);
 
     // this.application_view = this.options.application_view;
 
