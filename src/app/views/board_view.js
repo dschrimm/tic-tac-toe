@@ -26,13 +26,13 @@ const BoardView = Backbone.View.extend({
     this.trigger('turn', [row, column]);
 
     // Add class associated with player's number to determine marker color
-    if (this.model.playingField[row][column] === 1) {
+    if (this.model.playingField[row][column] === 'X') {
       $(e.currentTarget).addClass('player-one').append(this.model.markers[0]);
-    } else if (this.model.playingField[row][column] === 5) {
+    } else if (this.model.playingField[row][column] === 'O') {
       $(e.currentTarget).addClass('player-two').append(this.model.markers[1]);
     }
 
-    console.log(this.model.playingField);
+    // console.log(this.model.playingField);
     // console.log(this.model);
     this.trigger('checkwinner', [this.model]);
 

@@ -3,12 +3,30 @@ import Board from 'app/models/board';
 import Player from 'app/models/player';
 
 const TicTacToe = Backbone.Model.extend({
+  url: 'http://localhost:3000/api/v1/games',
+
+  parse: function(response) {
+    return response;
+  },
+
+  toJSON: function(){
+    var merged = [].concat.apply([], this.board.playingField);
+
+     var object = {
+       board: merged,
+       players: ["X Player","O Player" ],
+       outcome: this.winner
+     };
+     return object;
+   },
 
   initialize: function(){
     this.MAX_TURNS = 9;
     this.totalTurns = 0;
     this.board = new Board();
-    this.players = [new Player({num: 1}), new Player({num: 5})];
+    this.players = [new Player({num: 'X'}), new Player({num: 'O'})];
+    this.winner = 'draw';
+    this.currentMarker = 'X';
     this.currentPlayer = this.players[0];
     this.turnCount = 0;
   },
@@ -20,26 +38,60 @@ const TicTacToe = Backbone.Model.extend({
   checkWin: function() {
     var leftDiagonalSum = 0;
     var rightDiagonalSum = 0;
+    var playerValue = 0;
 
     for (var i = 0; i< 3; i++) {
       var rowSum = 0;
       var columnSum = 0;
 
       for (var x = 0; x < 3; x++){
-        rowSum += this.board.playingField[i][x];
-        columnSum += this.board.playingField[x][i];
+        if (this.board.playingField[i][x] == 'X') {
+          rowSum += 1;
+        } else if (this.board.playingField[i][x] == 'O') {
+          rowSum += 5;
+        // } else {
+        //   playerValue = 0;
+        }
+        if (this.board.playingField[x][i] == 'X') {
+          columnSum += 1;
+        } else if (this.board.playingField[x][i] == 'O') {
+          columnSum += 5;
+        }
+        // rowSum += playerValue;
+        // columnSum += playerValue;
       }
 
-      leftDiagonalSum += this.board.playingField[i][i];
-      rightDiagonalSum += this.board.playingField[i][2-i];
+      if (this.board.playingField[i][i] == 'X') {
+        leftDiagonalSum += 1;
+      } else if (this.board.playingField[i][i] == 'O') {
+        leftDiagonalSum += 5;
+      // } else {
+      //   playerValue = 0;
+      }
+      // leftDiagonalSum += playerValue;
+
+      if (this.board.playingField[i][2-i] == 'X') {
+        rightDiagonalSum += 1;
+      } else if (this.board.playingField[i][2-i] == 'O') {
+        rightDiagonalSum += 5;
+      // } else {
+      //   playerValue = 0;
+      }
+      // rightDiagonalSum += playerValue;
+
 
       if (rowSum === 3 || columnSum === 3|| leftDiagonalSum === 3 || rightDiagonalSum === 3) {
+        // toads
+        this.winner = 'X';
         return this.players[0];
+        // return true;
       } else if (rowSum === 15 || columnSum === 15 || leftDiagonalSum === 15 || rightDiagonalSum === 15) {
+        // toes
+        this.winner = 'O';
         return this.players[1];
+        // return true;
       }
     }
-
 
     return false;
   },
@@ -57,21 +109,10 @@ const TicTacToe = Backbone.Model.extend({
       throw new Error('Space is occupied. Pick an empty space.');
     }
 
+    // increase turn count
     this.turnCount += 1;
 
-    // // if turnCount >=5, check for winner
-    // if (this.turnCount >= 5) {
-    //   if (this.checkWin() !== false) {
-    //     throw new Error("Player" + this.checkWin().marker + ' is the winner!');
-    //   }
-    //   else if (this.turnCount === 9) {
-    //     throw new Error("It's a tie!");
-    //   }
-    // }
-
-    // if turnCount === 9, check for tie
-
-    //this toggles the player at the end of the turn
+    // toggle the player
     if (this.currentPlayer=== this.players[0]) {
       this.currentPlayer = this.players[1];
     } else {

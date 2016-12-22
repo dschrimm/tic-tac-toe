@@ -6,6 +6,9 @@ import TicTacToe from 'app/models/tic_tac_toe';
 
 var ApplicationView = Backbone.View.extend({
   initialize: function(){
+
+
+
     console.log("ApplicationView created");
     // var board = new Board();
     // console.log(this.model.board);
@@ -25,17 +28,16 @@ var ApplicationView = Backbone.View.extend({
   },
 
   takeTurn: function(coordinates){
+    // console.log(this.model.winner);
     this.player = 0;
     if (this.model.currentPlayer == this.model.players[0]) {
       this.player = 0;
+      this.currentMarker = 'X';
     } else {
       this.player = 1;
+      this.currentMarker = 'O';
     }
-    // console.log(this.model.currentPlayer);
-    // console.log(coordinates);
-    console.log(this.model.currentPlayer.get("num"));
     $('.current-player').empty();
-    console.log(this.player / 1);
     $('.current-player').append(this.model.board.markers[(1 - this.player)]);
     this.model.turn(coordinates[0], coordinates[1]);
     // this.render();
@@ -43,16 +45,20 @@ var ApplicationView = Backbone.View.extend({
 
   checkWinner: function(boardView) {
     if (this.model.turnCount >= 5) {
-      var winner = this.model.checkWin();
-      if (winner !== false){
+      console.log(this.model.checkWin());
+      // var winner = this.model.winner;
+      // console.log(winner);
+      if (this.model.checkWin() !== false){
         // alert('someone won');
         $('.winner').append(this.model.board.markers[this.player] + " won!");
         $('.current-player').hide();
         $('.current-player-header').hide();
+        this.model.save(this.model.toJSON);
       } else if (this.model.turnCount == 9) {
         $('.current-player').hide();
         $('.current-player-header').hide();
         $('.winner').append("It's a tie! Play again.");
+        this.model.save(this.model.toJSON);
       }
     }
   },
